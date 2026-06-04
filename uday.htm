@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UDAY SAI TRADERS</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f766e,#22c55e,#84cc16);
+    min-height:100vh;
+    color:white;
+}
+
+header{
+    text-align:center;
+    padding:30px;
+    background:rgba(0,0,0,0.2);
+    backdrop-filter:blur(10px);
+}
+
+header h1{
+    font-size:3rem;
+    color:#fff;
+}
+
+header p{
+    margin-top:10px;
+    font-size:1.2rem;
+}
+
+.container{
+    width:95%;
+    margin:auto;
+    padding:30px 0;
+}
+
+.info{
+    background:rgba(255,255,255,0.15);
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:30px;
+    text-align:center;
+}
+
+.grains{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    color:#333;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    color:#16a34a;
+    margin-bottom:10px;
+}
+
+.qty{
+    color:#2563eb;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.price{
+    color:#dc2626;
+    font-size:22px;
+    font-weight:bold;
+}
+
+button{
+    margin-top:15px;
+    background:#16a34a;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#orderBox{
+    display:none;
+    margin-top:30px;
+    background:white;
+    color:black;
+    padding:25px;
+    border-radius:15px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+    background:rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>UDAY SAI TRADERS</h1>
+    <p>Agriculture Grains Trading Business</p>
+</header>
+
+<div class="container">
+
+    <div class="info">
+        <h2>Founder</h2>
+        <h3>Koteshwarrao</h3>
+        <p>Quality Agricultural Products & Trusted Trading Services</p>
+    </div>
+
+    <div class="grains">
+
+        <div class="card">
+            <h3>Paddy</h3>
+            <div class="qty">Available: 500 Quintals</div>
+            <div class="price">₹2,300 / Quintal</div>
+            <button onclick="buy('Paddy','2300')">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <h3>Rice</h3>
+            <div class="qty">Available: 300 Quintals</div>
+            <div class="price">₹4,500 / Quintal</div>
+            <button onclick="buy('Rice','4500')">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <h3>Maize</h3>
+            <div class="qty">Available: 250 Quintals</div>
+            <div class="price">₹2,100 / Quintal</div>
+            <button onclick="buy('Maize','2100')">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <h3>Wheat</h3>
+            <div class="qty">Available: 400 Quintals</div>
+            <div class="price">₹2,800 / Quintal</div>
+            <button onclick="buy('Wheat','2800')">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <h3>Green Gram</h3>
+            <div class="qty">Available: 150 Quintals</div>
+            <div class="price">₹8,000 / Quintal</div>
+            <button onclick="buy('Green Gram','8000')">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <h3>Black Gram</h3>
+            <div class="qty">Available: 120 Quintals</div>
+            <div class="price">₹7,500 / Quintal</div>
+            <button onclick="buy('Black Gram','7500')">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <h3>Bengal Gram</h3>
+            <div class="qty">Available: 200 Quintals</div>
+            <div class="price">₹6,500 / Quintal</div>
+            <button onclick="buy('Bengal Gram','6500')">Buy Now</button>
+        </div>
+
+        <div class="card">
+            <h3>Groundnut</h3>
+            <div class="qty">Available: 180 Quintals</div>
+            <div class="price">₹6,800 / Quintal</div>
+            <button onclick="buy('Groundnut','6800')">Buy Now</button>
+        </div>
+
+    </div>
+
+    <form action="https://formsubmit.co/palepuuday22@gmail.com" method="POST">
+
+    <h2>Order Details</h2>
+
+    <!-- Email settings -->
+    <input type="hidden" name="_subject" value="New Order - UDAY SAI TRADERS">
+    <input type="hidden" name="_captcha" value="false">
+
+    <p><b>Selected Grain:</b> <span id="grain"></span></p>
+    <p><b>Price:</b> ₹<span id="amount"></span> / Quintal</p>
+
+    <input type="text" name="Customer Name" placeholder="Customer Name" required>
+
+    <input type="tel" name="Mobile Number" placeholder="Mobile Number" required>
+
+    <input type="text" name="Selected Grain" id="grainInput" readonly required>
+
+    <input type="text" name="Price" id="priceInput" readonly required>
+
+    <input type="number" name="Quantity" placeholder="Quantity (Quintals)" required>
+
+    <button type="submit">Submit Order</button>
+</form>
+
+</div>
+
+<footer>
+    © 2026 UDAY SAI TRADERS | Founder: Koteshwarrao
+</footer>
+
+<script>
+function buy(grain, price){
+    document.getElementById("orderBox").style.display = "block";
+
+    document.getElementById("grain").innerText = grain;
+    document.getElementById("amount").innerText = price;
+
+    document.getElementById("grainInput").value = grain;
+    document.getElementById("priceInput").value = price;
+
+    document.getElementById("orderBox")
+        .scrollIntoView({ behavior: "smooth" });
+}
+</script>
+</body>
+</html>
